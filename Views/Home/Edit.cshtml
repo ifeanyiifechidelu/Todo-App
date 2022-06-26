@@ -1,0 +1,51 @@
+﻿@model Webform.Models.FormModel
+
+@{
+    ViewData["Title"] = "Edit page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Edit Your ToDo</h1>
+</div>
+
+@*<div class="form-group">
+  
+    <div class="form-group">
+      <label class="col-form-label mt-4" for="inputDefault">Input Task</label>
+      <input type="text" class="form-control" placeholder="Input Task" id="inputDefault" spellcheck="false" data-ms-editor="true">
+    </div>
+</div>
+
+<div class="btn-group-vertical">
+    <button type="button" class="btn btn-outline-primary" asp-action="Submit">Submit</button>
+</div>*@
+
+
+<form method="post" class="border p-3 mt-4" asp-controller="Home" asp-action="Update">
+    <div>
+        <div class="row pb-2">
+            <h2 class="text-primary">Edit To Do List</h2>
+            <hr />
+        </div>
+@*        <div asp-validation-summary="All"></div>
+*@        
+        <div class="mb-3">
+            @*<label asp-for="CategoryName"></label>*@
+            <label>To Do List Task</label>
+            <input class="form-control" asp-for="Task"/>
+            @*<span asp-validation-for="CategoryName" class="text-danger"></span>*@
+        </div>
+        <div class="mb-3">
+            <label>Due Date and Time</label>
+             <input type="date" asp-for="DueDate" class="form-control" />
+        </div>
+        <div class="mb-3">
+             <input hidden asp-for="TaskId" class="form-control"/>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Click To Update ToDo </button>
+        <a asp-controller="" asp-action="" class="btn btn-secondary" style="width:150px">
+            Back To List
+        </a>
+        
+    </div>
+</form>

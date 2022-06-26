@@ -1,0 +1,62 @@
+﻿@using Webform.viewModel
+@model List<FormModel>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Your ToDo</h1>
+    <!--<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p> -->
+</div>
+
+<div class="btn-group-vertical">
+    <button asp-controller="Home" asp-action="RemoveAll" asp-all-route-data="" type="button" class="btn btn-outline-danger" >Delete All</button>
+    <a type="button" class="btn btn-outline-dark" asp-controller="Home" asp-action="Create"  >Create New ToDo</a>
+
+</div>
+<div>
+</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col"><h3>S/N</h3></th>
+      <th scope="col"><h3>Todo Title</h3></th>
+      <th scope="col"><h3>Due date</h3></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+      @{var count = 0;};
+      @foreach(var members in Model){
+      <tr class="table-success">
+      <th scope="row"><h2>@{count +=1;}</h2></th>
+      <td width="20%"><a class="btn btn-link">@members.Task</a></td>
+      <td width="20%">@members.DueDate</td>
+      <td>
+          <div class="d-grid gap-2">
+                <a class="btn btn-primary  mx-2" asp-controller="Home" asp-action="Edit" asp-route-id="@members.TaskId"><i class="bi bi-pen"></i> Edit</a>
+             </div>
+      </td>
+      <td>
+          <div class="d-grid gap-2">
+                 <a class="btn btn-outline-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@members.TaskId"><i class="bi bi-trash3-fill"></i> Delete</a>
+           </div>
+      </td>
+
+    </tr>
+    }
+  </tbody>
+</table>
+
+
+@*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+*@
+@*<div class="container m-3">
+    <a class="btn btn-outline-secondary">outline-secondary link</a>
+    <button type="button" class="btn btn-outline-secondary">outline-secondary 'button'</button>
+    <br><br>
+    <a class="btn btn-outline-light">outline-light link</a>
+    <button type="button" class="btn btn-outline-light">outline-light 'button'</button>
+</div>*@
